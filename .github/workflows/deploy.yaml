@@ -5,7 +5,7 @@ name: Deploy to ECS
 
 on:
   push:
-    branches: [main]
+    branches: [main, feature/ecr]
 
 jobs:
   deploy:
@@ -35,7 +35,9 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
         env:
-          TF_VAR_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+          TF_VAR_account_id: ${{ secrets.AWS_ACCOUNT_ID }} # terraform apply -var="account_id=255945442255"
           TF_VAR_region: ${{ secrets.AWS_REGION }}
           TF_VAR_ecr_repo: ${{ secrets.ECR_REPOSITORY }}
-          TF_VAR_image_tag: ${{ secrets.ECR_IMAGE_TAG }}
+          TF_VAR_image_tag: ${{ github.sha }}
+
+
