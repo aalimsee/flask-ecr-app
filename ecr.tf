@@ -1,8 +1,15 @@
 
+# ECR created manually, therefore tf create is not needed
+/* 
+aws ecr create-repository \
+  --repository-name flask-ecr-demo \
+  --image-scanning-configuration scanOnPush=true \
+  --region us-east-1
+ */
 
 
 # Create the ECR Repository with image scanning enabled
-resource "aws_ecr_repository" "flask_ecr_demo" {
+/* resource "aws_ecr_repository" "flask_ecr_demo" {
   name = "flask-ecr-demo"
 
   image_scanning_configuration {
@@ -18,4 +25,4 @@ resource "aws_ecr_repository" "flask_ecr_demo" {
     prevent_destroy = false # Allows the resource to be destroyed
   }
 }
-
+*/
