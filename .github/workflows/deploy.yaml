@@ -28,6 +28,9 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Print GitHub SHA (debug)
+        run: echo "GitHub SHA: ${{ github.sha }}"
+
       - name: Terraform Apply
         run: terraform apply -auto-approve
         env:
