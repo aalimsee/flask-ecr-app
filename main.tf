@@ -3,14 +3,14 @@
 
 
 provider "aws" {
-  region = var.aws_region
+  aws_region = var.aws_aws_region
 }
 
 terraform {
   backend "s3" {
-    bucket = "sctp-ce9-tfstate"
-    key    = "aalimsee-ce9-M3.4-flask-ecr-app.tfstate" # Replace the value of key to <your>.tfstate
-    region = "us-east-1"
+    bucket     = "sctp-ce9-tfstate"
+    key        = "aalimsee-ce9-M3.4-flask-ecr-app.tfstate" # Replace the value of key to <your>.tfstate
+    aws_region = "us-east-1"
   }
 }
 
@@ -101,7 +101,7 @@ resource "aws_ecs_task_definition" "flask" {
   container_definitions = jsonencode([
     {
       name  = "flask-container",
-      image = "${var.account_id}.dkr.ecr.${var.region}.amazonaws.com/${var.ecr_repo}:${var.image_tag}",
+      image = "${var.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${var.ecr_repo}:${var.image_tag}",
       portMappings = [{
         containerPort = 5000,
         hostPort      = 5000,
