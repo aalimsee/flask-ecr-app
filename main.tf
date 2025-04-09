@@ -117,3 +117,4 @@ resource "aws_ecs_service" "flask" {
   depends_on = [aws_iam_role_policy_attachment.ecs_task_exec_role_policy]
 }
 
+
