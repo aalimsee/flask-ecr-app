@@ -32,6 +32,10 @@ Output
     }
 }
 ```
+Check
+```
+aws ecr describe-repositories --repository-names flask-ecr-demo --region us-east-1
+```
 
 - Use GitHub Actions to build and push images to ECR.
 
