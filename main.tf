@@ -111,6 +111,7 @@ resource "aws_ecs_task_definition" "flask" {
   ])
 }
 
+# 255945442255.dkr.ecr.us-east-1.amazonaws.com/flask-ecr-demo:latest
 output "container_image" {
   value = "${var.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${var.ecr_repo}:${var.image_tag}"
 }
