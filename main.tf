@@ -10,7 +10,7 @@ terraform {
   backend "s3" {
     bucket = "sctp-ce9-tfstate"
     key    = "aalimsee-ce9-M3.4-flask-ecr-app.tfstate" # Replace the value of key to <your>.tfstate
-    region = var.aws_region
+    region = "us-east-1"
   }
 }
 
