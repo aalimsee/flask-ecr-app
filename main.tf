@@ -101,7 +101,7 @@ resource "aws_ecs_task_definition" "flask" {
   container_definitions = jsonencode([
     {
       name  = "flask-container",
-      image = "${var.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${var.ecr_repo}:${var.image_tag}",
+      image = "${var.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${var.ecr_repo}:latest",
       portMappings = [{
         containerPort = 5000,
         hostPort      = 5000,
