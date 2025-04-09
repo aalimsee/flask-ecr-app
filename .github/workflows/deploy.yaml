@@ -28,6 +28,9 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Terraform Plan
+        run: terraform plan
+
       - name: Print GitHub SHA (debug)
         run: | 
             echo "GitHub SHA: ${{ github.sha }}"
