@@ -1,5 +1,6 @@
 
-# ECR created manually, therefore tf create is not needed
+# ---ECR created manually, therefore tf create is not needed
+# ----------------------------------------------------------
 /* 
 aws ecr create-repository \
   --repository-name flask-ecr-demo \
@@ -8,7 +9,8 @@ aws ecr create-repository \
  */
 
 
-# Create the ECR Repository with image scanning enabled
+# ---Create the ECR Repository with image scanning enabled
+# --------------------------------------------------------
 /* resource "aws_ecr_repository" "flask_ecr_demo" {
   name = "flask-ecr-demo"
 

@@ -58,14 +58,28 @@ gh secret set ECR_REPOSITORY -r aalimsee/flask-ecr-app
 
 You’ll be prompted to enter the value for each secret securely in your terminal.
 
+# Information from View Push Commands (ECR)
 Make sure that you have the latest version of the AWS CLI and Docker installed. For more information, see Getting Started with Amazon ECR .
 Use the following steps to authenticate and push an image to your repository. For additional registry authentication methods, including the Amazon ECR credential helper, see Registry Authentication .
-Retrieve an authentication token and authenticate your Docker client to your registry. Use the AWS CLI:
+
+## Retrieve an authentication token and authenticate your Docker client to your registry. 
+Use the AWS CLI:
+```
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 255945442255.dkr.ecr.us-east-1.amazonaws.com
+```
 Note: If you receive an error using the AWS CLI, make sure that you have the latest version of the AWS CLI and Docker installed.
-Build your Docker image using the following command. For information on building a Docker file from scratch see the instructions here . You can skip this step if your image is already built:
+
+## Build your Docker image using the following command. For information on building a Docker file from scratch see the instructions here . You can skip this step if your image is already built:
+```
 docker build -t flask-ecr-demo .
-After the build completes, tag your image so you can push the image to this repository:
+```
+
+## After the build completes, tag your image so you can push the image to this repository:
+```
 docker tag flask-ecr-demo:latest 255945442255.dkr.ecr.us-east-1.amazonaws.com/flask-ecr-demo:latest
-Run the following command to push this image to your newly created AWS repository:
+```
+
+## Run the following command to push this image to your newly created AWS repository:
+```
 docker push 255945442255.dkr.ecr.us-east-1.amazonaws.com/flask-ecr-demo:latest
+```
