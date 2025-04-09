@@ -57,16 +57,6 @@ resource "aws_security_group" "ecs_sg" {
 }
 
 
-# ECR Repository
-resource "aws_ecr_repository" "flask_ecr_repo" {
-  name                 = var.ECR_REPOSITORY
-  image_tag_mutability = "MUTABLE" # You can set it to IMMUTABLE if you want to prevent overwriting tags
-
-  lifecycle {
-    prevent_destroy = false # Set to true if you don't want to accidentally destroy the repository
-  }
-}
-
 resource "aws_ecs_cluster" "main" {
   name = "flask-ecs-cluster"
 }
