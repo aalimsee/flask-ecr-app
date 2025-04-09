@@ -28,14 +28,6 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Plan
-        run: terraform plan
-        env:
-            TF_VAR_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-            TF_VAR_region: ${{ secrets.AWS_REGION }}
-            TF_VAR_ecr_repo: ${{ secrets.ECR_REPOSITORY }}
-            TF_VAR_image_tag: ${{ secrets.ECR_IMAGE_TAG }}
-
       - name: Print GitHub SHA (debug)
         run: | 
             echo "GitHub SHA: ${{ github.sha }}"
