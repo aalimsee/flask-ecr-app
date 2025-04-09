@@ -1,12 +1,6 @@
 
 
 
-
-# Define the AWS provider
-provider "aws" {
-  region = "us-east-1"
-}
-
 # Create the ECR Repository with image scanning enabled
 resource "aws_ecr_repository" "flask_ecr_demo" {
   name = "flask-ecr-demo"
