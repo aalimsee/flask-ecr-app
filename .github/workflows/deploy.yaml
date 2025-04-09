@@ -32,18 +32,12 @@ jobs:
         run: | 
             echo "GitHub SHA: ${{ github.sha }}"
 
-#      - name: Terraform Apply
-#        run: terraform apply -auto-approve
-#        env:
-#          TF_VAR_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-#          TF_VAR_region: ${{ secrets.AWS_REGION }}
-#          TF_VAR_ecr_repo: ${{ secrets.ECR_REPOSITORY }}
-#          TF_VAR_image_tag: ${{ secrets.ECR_IMAGE_TAG }}
-
-
-      - name: Terraform Plan
-        run: terraform plan -var "aws_region=${{ env.AWS_REGION }}" -var "ecr_repo=${{ env.ECR_REPOSITORY }}" -var "image_tag=${{ env.IMAGE_TAG }}"
-  
       - name: Terraform Apply
-        run: terraform apply -auto-approve -var "aws_region=${{ env.AWS_REGION }}" -var "ecr_repo=${{ env.ECR_REPOSITORY }}" -var "image_tag=${{ env.IMAGE_TAG }}"
+        run: terraform apply -auto-approve
+        env:
+          TF_VAR_account_id: ${{ secrets.AWS_ACCOUNT_ID }} # terraform apply -var="account_id=255945442255"
+          TF_VAR_region: ${{ secrets.AWS_REGION }}
+          TF_VAR_ecr_repo: ${{ secrets.ECR_REPOSITORY }}
+          TF_VAR_image_tag: ${{ github.sha }}
+
 
