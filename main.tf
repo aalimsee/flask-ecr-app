@@ -111,6 +111,10 @@ resource "aws_ecs_task_definition" "flask" {
   ])
 }
 
+output "container_image" {
+  value = "${var.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${var.ecr_repo}:${var.image_tag}"
+}
+
 resource "aws_ecs_service" "flask" {
   name            = "flask-service"
   cluster         = aws_ecs_cluster.main.id
