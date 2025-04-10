@@ -11,7 +11,8 @@ aws ecr create-repository \
 
 # ---Create the ECR Repository with image scanning enabled
 # --------------------------------------------------------
-/* resource "aws_ecr_repository" "flask_ecr_demo" {
+/* 
+resource "aws_ecr_repository" "flask_ecr_demo" {
   name = "flask-ecr-demo"
 
   image_scanning_configuration {
