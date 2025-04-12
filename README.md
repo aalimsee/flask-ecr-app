@@ -49,11 +49,11 @@ aws ecr describe-repositories --repository-names flask-ecr-demo --region us-east
 Replace your-repo-name with your actual GitHub repo name (e.g., flask-ecr-app):
 
 ```
-gh secret set AWS_ACCESS_KEY_ID -r aalimsee/flask-ecr-app
-gh secret set AWS_SECRET_ACCESS_KEY -r aalimsee/flask-ecr-app
-gh secret set AWS_REGION -r aalimsee/flask-ecr-app
-gh secret set AWS_ACCOUNT_ID -r aalimsee/flask-ecr-app
-gh secret set ECR_REPOSITORY -r aalimsee/flask-ecr-app
+gh secret set AWS_ACCESS_KEY_ID -b XXXX -r aalimsee/flask-ecr-app
+gh secret set AWS_SECRET_ACCESS_KEY -b XXXX -r aalimsee/flask-ecr-app
+gh secret set AWS_REGION -b XXXX -r aalimsee/flask-ecr-app
+gh secret set AWS_ACCOUNT_ID -b XXXX -r aalimsee/flask-ecr-app
+gh secret set ECR_REPOSITORY -b XXXX -r aalimsee/flask-ecr-app
 ```
 
 You’ll be prompted to enter the value for each secret securely in your terminal.
