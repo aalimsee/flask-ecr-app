@@ -6,7 +6,26 @@ aws ecr create-repository \
   --repository-name flask-ecr-demo \
   --image-scanning-configuration scanOnPush=true \
   --region us-east-1
+
+aws ecr create-repository \
+  --repository-name lach/dev \
+  --image-scanning-configuration scanOnPush=true \
+  --tags Key=Environment,Value=Dev Key=Name,Value=lach-team \
+  --region us-east-1
+
+aws ecr create-repository \
+  --repository-name lach/staging \
+  --image-scanning-configuration scanOnPush=true \
+  --tags Key=Environment,Value=staging Key=Name,Value=lach-team \
+  --region us-east-1
+
+aws ecr create-repository \
+  --repository-name lach/prod \
+  --image-scanning-configuration scanOnPush=true \
+  --tags Key=Environment,Value=prod Key=Name,Value=lach-team \
+  --region us-east-1
  */
+
 
 
 # ---Create the ECR Repository with image scanning enabled
