@@ -1,17 +1,13 @@
 name: Build and Push Docker Image to ECR
 
 on:
-#  push:
-#    branches:
-#      - main
-#      - staging
-#      - dev
-#      - feature/ecr
+  push:
+    branches:
+    - dev
   pull_request: # on pull request to main for docker image build and push to ECR
     branches:
-      - main
-      - staging
-      - dev
+    - main
+    - staging
 
 jobs:
   deploy:
@@ -46,24 +42,26 @@ jobs:
             exit 1
           fi
 
+      # - name: Build Docker image
+      #   run: |
+      #     IMAGE_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ env.REPO_NAME }}
+      #     docker build -t $IMAGE_URI:latest -t $IMAGE_URI:${{ github.sha }} .
+  
+      # - name: Push Docker image to Amazon ECR
+      #   run: |
+      #     IMAGE_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ env.REPO_NAME }}
+      #     docker push $IMAGE_URI:latest
+      #     docker push $IMAGE_URI:${{ github.sha }}
+
       - name: Build Docker image
         run: |
-          IMAGE_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ env.REPO_NAME }}
+          IMAGE_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}
           docker build -t $IMAGE_URI:latest -t $IMAGE_URI:${{ github.sha }} .
-  
+
       - name: Push Docker image to Amazon ECR
         run: |
-          IMAGE_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ env.REPO_NAME }}
+          IMAGE_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}
           docker push $IMAGE_URI:latest
           docker push $IMAGE_URI:${{ github.sha }}
 
-      # - name: Build Docker image
-      #   run: |
-      #     IMAGE_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}
-      #     docker build -t $IMAGE_URI:latest -t $IMAGE_URI:${{ github.sha }} .
 
-      # - name: Push Docker image to Amazon ECR
-      #   run: |
-      #     IMAGE_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}
-      #     docker push $IMAGE_URI:latest
-      #     docker push $IMAGE_URI:${{ github.sha }}
