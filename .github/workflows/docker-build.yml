@@ -28,19 +28,19 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Determine Repository Name
-        id: repo_name
-        run: |
-          if [[ "${{ github.ref }}" == "refs/heads/dev" ]]; then
-            echo "REPO_NAME=lach/dev" >> $GITHUB_ENV
-          elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
-            echo "REPO_NAME=lach/staging" >> $GITHUB_ENV
-          elif [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "REPO_NAME=lach/prod" >> $GITHUB_ENV
-          else
-            echo "Branch not allowed to push images"
-            exit 1
-          fi
+      # - name: Determine Repository Name
+      #   id: repo_name
+      #   run: |
+      #     if [[ "${{ github.ref }}" == "refs/heads/dev" ]]; then
+      #       echo "REPO_NAME=lach/dev" >> $GITHUB_ENV
+      #     elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
+      #       echo "REPO_NAME=lach/staging" >> $GITHUB_ENV
+      #     elif [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+      #       echo "REPO_NAME=lach/prod" >> $GITHUB_ENV
+      #     else
+      #       echo "Branch not allowed to push images"
+      #       exit 1
+      #     fi
 
       # - name: Build Docker image
       #   run: |
